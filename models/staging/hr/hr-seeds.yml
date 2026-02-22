@@ -1,0 +1,61 @@
+version: 2
+
+models:
+
+  - name: stg_seed_memberships
+    description: Staging of employee memberships registered in the system.
+    columns:
+      - name: membership_id
+        description: "{{ doc('membership_id') }}"
+        tests:
+          - unique
+          - not_null
+      - name: user_id
+        description: "{{ doc('user_id') }}"
+        tests:
+          - not_null
+      - name: account_id
+        description: "{{ doc('account_id') }}"
+        tests:
+          - not_null
+      - name: is_active
+        description: "{{ doc('is_active') }}"
+        tests:
+          - not_null
+      - name: role
+        description: "{{ doc('role') }}"
+      - name: firstname
+        description: "{{ doc('firstname') }}"
+      - name: lastname
+        description: "{{ doc('lastname') }}"
+
+  - name: stg_seed_user_contracts
+    description: Staging of contracts linking an employee (membership) to a location.
+    columns:
+      - name: user_contract_id
+        description: "{{ doc('user_contract_id') }}"
+        tests:
+          - unique
+          - not_null
+      - name: membership_id
+        description: "{{ doc('membership_id') }}"
+        tests:
+          - not_null
+      - name: location_id
+        description: "{{ doc('location_id') }}"
+        tests:
+          - not_null
+      - name: account_id
+        description: "{{ doc('account_id') }}"
+        tests:
+          - not_null
+      - name: contract_start_date
+        description: "{{ doc('contract_start_date') }}"
+        tests:
+          - not_null
+      - name: contract_end_date
+        description: "{{ doc('contract_end_date') }}"
+      - name: contract_type
+        description: "{{ doc('contract_type') }}"
+      - name: contract_time
+        description: "{{ doc('contract_time') }}"

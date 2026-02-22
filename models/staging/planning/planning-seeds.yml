@@ -1,0 +1,57 @@
+version: 2
+
+models:
+
+  - name: stg_seed_shifts
+    description: Staging of planned work shifts for employees.
+    columns:
+      - name: shift_id
+        description: "{{ doc('shift_id') }}"
+        tests:
+          - unique
+          - not_null
+      - name: user_contract_id
+        description: "{{ doc('user_contract_id') }}"
+        tests:
+          - not_null
+      - name: account_id
+        description: "{{ doc('account_id') }}"
+        tests:
+          - not_null
+      - name: starts_at
+        description: "{{ doc('start_at') }}"
+        tests:
+          - not_null
+      - name: ends_at
+        description: "{{ doc('end_at') }}"
+        tests:
+          - not_null
+      - name: planification_type
+        description: "{{ doc('planification_type') }}"
+
+  - name: stg_seed_rests
+    description: Staging of planned rest periods for employees.
+    columns:
+      - name: rest_id
+        description: "{{ doc('rest_id') }}"
+        tests:
+          - unique
+          - not_null
+      - name: user_contract_id
+        description: "{{ doc('user_contract_id') }}"
+        tests:
+          - not_null
+      - name: account_id
+        description: "{{ doc('account_id') }}"
+        tests:
+          - not_null
+      - name: starts_at
+        description: "{{ doc('start_at') }}"
+        tests:
+          - not_null
+      - name: ends_at
+        description: "{{ doc('end_at') }}"
+        tests:
+          - not_null
+      - name: rest_type
+        description: "{{ doc('rest_type') }}"

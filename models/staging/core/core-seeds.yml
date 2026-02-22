@@ -1,0 +1,160 @@
+version: 2
+
+models:
+  - name: stg_seed_accounts
+    description: Staging of Combo customer accounts.
+    columns:
+      - name: account_id
+        description: "{{ doc('account_id') }}"
+        tests:
+          - unique
+          - not_null
+      - name: account_name
+        description: "{{ doc('account_name') }}"
+        tests:
+          - not_null
+      - name: account_created_at
+        description: "{{ doc('created_at') }}"
+      - name: account_updated_at
+        description: "{{ doc('updated_at') }}"
+      - name: account_time_zone
+        description: "{{ doc('time_zone') }}"
+      - name: account_default_language
+        description: "{{ doc('account_default_language') }}"
+      - name: account_city
+        description: "{{ doc('city') }}"
+      - name: account_street
+        description: "{{ doc('street') }}"
+      - name: account_zip
+        description: "{{ doc('account_zip') }}"
+      - name: account_collective_agreement_id
+        description: "{{ doc('collective_agreement_id') }}"
+      - name: account_sheet_hour_cut
+        description: "{{ doc('sheet_hour_cut') }}"
+      - name: account_social_tax
+        description: "{{ doc('social_tax') }}"
+      - name: account_paid_breaks
+        description: "{{ doc('paid_breaks') }}"
+      - name: account_show_real_and_planned_hours_on_planning
+        description: "{{ doc('show_real_and_planned_hours_on_planning') }}"
+      - name: is_account_blocked
+        description: "{{ doc('is_blocked') }}"
+      - name: account_payroll_software_id
+        description: "{{ doc('payroll_software_id') }}"
+      - name: account_partner_id
+        description: "{{ doc('partner_id') }}"
+      - name: account_country
+        description: "{{ doc('country') }}"
+      - name: pref_allow_duplication_of_schedule_over_more_weeks
+        description: "{{ doc('pref_allow_duplication_of_schedule_over_more_weeks') }}"
+      - name: pref_automatically_generate_employee_ids
+        description: "{{ doc('pref_automatically_generate_employee_ids') }}"
+      - name: pref_director_can_read_paid_leave_dashboard
+        description: "{{ doc('pref_director_can_read_paid_leave_dashboard') }}"
+      - name: pref_directors_can_access_dashboard_rh
+        description: "{{ doc('pref_directors_can_access_dashboard_rh') }}"
+      - name: pref_display_rewards_on_memberpage
+        description: "{{ doc('pref_display_rewards_on_memberpage') }}"
+      - name: pref_display_shifts_from_other_teams
+        description: "{{ doc('pref_display_shifts_from_other_teams') }}"
+      - name: pref_display_signature_for_planning_pdf
+        description: "{{ doc('pref_display_signature_for_planning_pdf') }}"
+      - name: pref_display_sunday_for_planning_pdf
+        description: "{{ doc('pref_display_sunday_for_planning_pdf') }}"
+      - name: pref_display_week_hours_for_planning_pdf
+        description: "{{ doc('pref_display_week_hours_for_planning_pdf') }}"
+      - name: pref_employee_can_read_coworker_planning
+        description: "{{ doc('pref_employee_can_read_coworker_planning') }}"
+      - name: pref_employee_can_receive_sms_notification
+        description: "{{ doc('pref_employee_can_receive_sms_notification') }}"
+      - name: pref_enabled_conversation
+        description: "{{ doc('pref_enabled_conversation') }}"
+      - name: pref_hide_counters_alerts_planning_to_daily_worker
+        description: "{{ doc('pref_hide_counters_alerts_planning_to_daily_worker') }}"
+      - name: pref_hide_weekly_rests_planning_unpublished
+        description: "{{ doc('pref_hide_weekly_rests_planning_unpublished') }}"
+      - name: pref_hr_dashboard_access_granted
+        description: "{{ doc('pref_hr_dashboard_access_granted') }}"
+      - name: pref_include_over_hours_in_wages
+        description: "{{ doc('pref_include_over_hours_in_wages') }}"
+      - name: pref_lock_meals
+        description: "{{ doc('pref_lock_meals') }}"
+      - name: pref_manager_can_access_to_payroll
+        description: "{{ doc('pref_manager_can_access_to_payroll') }}"
+      - name: pref_manager_can_read_all_salaries
+        description: "{{ doc('pref_manager_can_read_all_salaries') }}"
+      - name: pref_manager_can_read_paid_leave_dashboard
+        description: "{{ doc('pref_manager_can_read_paid_leave_dashboard') }}"
+      - name: pref_manager_created_employees_plannable
+        description: "{{ doc('pref_manager_created_employees_plannable') }}"
+      - name: pref_prevent_overlapping_pay_periods
+        description: "{{ doc('pref_prevent_overlapping_pay_periods') }}"
+      - name: pref_report_evened_out_by_default
+        description: "{{ doc('pref_report_evened_out_by_default') }}"
+      - name: pref_send_activities_report_mail_to_owner
+        description: "{{ doc('pref_send_activities_report_mail_to_owner') }}"
+      - name: pref_uses_timeclock
+        description: "{{ doc('pref_uses_timeclock') }}"
+      - name: pref_currency_iso_code
+        description: "{{ doc('pref_currency_iso_code') }}"
+      - name: pref_planning_pdf_display_mode
+        description: "{{ doc('pref_planning_pdf_display_mode') }}"
+      - name: pref_quadra_paie_separator
+        description: "{{ doc('pref_quadra_paie_separator') }}"
+      - name: pref_productivity_objective
+        description: "{{ doc('pref_productivity_objective') }}"
+      - name: pref_minimum_days_for_timeoff_request
+        description: "{{ doc('pref_minimum_days_for_timeoff_request') }}"
+
+  - name: stg_seed_locations
+    description: Staging of locations (restaurants, shops, etc.) linked to customer accounts.
+    columns:
+      - name: location_id
+        description: "{{ doc('location_id') }}"
+        tests:
+          - unique
+          - not_null
+      - name: location_name
+        description: "{{ doc('location_name') }}"
+      - name: account_id
+        description: "{{ doc('account_id') }}"
+        tests:
+          - not_null
+      - name: location_created_at
+        description: "{{ doc('created_at') }}"
+        tests:
+          - not_null
+      - name: location_updated_at
+        description: "{{ doc('updated_at') }}"
+      - name: location_address
+        description: "{{ doc('address') }}"
+        tests:
+          - not_null
+      - name: location_preferences
+        description: to define
+      - name: location_city
+        description: "{{ doc('city') }}"
+      - name: location_zipcode
+        description: "{{ doc('zipcode') }}"
+      - name: location_collective_agreement_id
+        description: "{{ doc('collective_agreement_id') }}"
+      - name: location_country
+        description: "{{ doc('country') }}"
+      - name: location_partner_id
+        description: "{{ doc('partner_id') }}"
+      - name: is_location_archived
+        description: "{{ doc('is_location_archived') }}"
+      - name: location_default_break_duration
+        description: "{{ doc('location_default_break_duration') }}"
+      - name: location_payroll_software_id
+        description: "{{ doc('payroll_software_id') }}"
+      - name: location_enable_public_holiday_configuration
+        description: "{{ doc('location_enable_public_holiday_configuration') }}"
+      - name: location_public_holiday_overtime_rate
+        description: "{{ doc('location_public_holiday_overtime_rate') }}"
+      - name: location_public_holiday_paid_by_default
+        description: "{{ doc('location_public_holiday_paid_by_default') }}"
+      - name: location_type
+        description: "{{ doc('location_type') }}"
+      - name: location_minimum_shift_duration_for_automatic_breaks_in_hours
+        description: "{{ doc('location_minimum_shift_duration_for_automatic_breaks_in_hours') }}"
