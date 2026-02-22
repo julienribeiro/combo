@@ -5,12 +5,12 @@ models:
   - name: stg_seed_memberships
     description: Staging of employee memberships registered in the system.
     columns:
-      - name: membership_id
+      - name: member_id
         description: "{{ doc('membership_id') }}"
         tests:
           - unique
           - not_null
-      - name: user_id
+      - name: member_user_id
         description: "{{ doc('user_id') }}"
         tests:
           - not_null
@@ -18,16 +18,71 @@ models:
         description: "{{ doc('account_id') }}"
         tests:
           - not_null
-      - name: is_active
+      - name: member_created_at
+        description: "{{ doc('created_at') }}"
+        tests:
+          - not_null
+      - name: member_updated_at
+        description: "{{ doc('updated_at') }}"
+      - name: member_role
+        description: "{{ doc('role') }}"
+        tests:
+          - not_null
+          - accepted_values:
+              arguments: 
+                values: ['owner', 'manager', 'director', 'employee', 'main_owner']
+      - name: member_sort_index
+        description: "{{ doc('sort_index') }}"
+      - name: member_lastname
+        description: "{{ doc('lastname') }}"
+      - name: member_firstname
+        description: "{{ doc('firstname') }}"
+      - name: member_address
+        description: "{{ doc('address') }}"
+      - name: member_pref_member_page_order_by
+        description: "{{ doc('member_pref_member_page_order_by') }}"
+      - name: is_member_active
         description: "{{ doc('is_active') }}"
         tests:
           - not_null
-      - name: role
-        description: "{{ doc('role') }}"
-      - name: firstname
-        description: "{{ doc('firstname') }}"
-      - name: lastname
-        description: "{{ doc('lastname') }}"
+      - name: is_member_onboarded
+        description: "{{ doc('is_member_onboarded') }}"
+      - name: can_member_manage_published_planning
+        description: "{{ doc('can_member_manage_published_planning') }}"
+      - name: can_member_invalidate_shift
+        description: "{{ doc('can_member_invalidate_shift') }}"
+      - name: can_member_remove_employee
+        description: "{{ doc('can_member_remove_employee') }}"
+      - name: can_member_set_custom_rest_value
+        description: "{{ doc('can_member_set_custom_rest_value') }}"
+      - name: has_member_enhanced_medical_examination
+        description: "{{ doc('has_member_enhanced_medical_examination') }}"
+      - name: is_member_pref_admin_restrict_access_to_timeoff
+        description: "{{ doc('is_member_pref_admin_restrict_access_to_timeoff') }}"
+      - name: is_member_pref_calendar_sync_enabled
+        description: "{{ doc('is_member_pref_calendar_sync_enabled') }}"
+      - name: can_member_pref_write_paid_leave_ledger
+        description: "{{ doc('can_member_pref_write_paid_leave_ledger') }}"
+      - name: is_member_pref_display_shifts_from_other_teams
+        description: "{{ doc('is_member_pref_display_shifts_from_other_teams') }}"
+      - name: is_member_pref_email_notification_enabled
+        description: "{{ doc('is_member_pref_email_notification_enabled') }}"
+      - name: has_member_pref_access_to_all_locations
+        description: "{{ doc('has_member_pref_access_to_all_locations') }}"
+      - name: is_member_pref_include_owner_in_schedules
+        description: "{{ doc('is_member_pref_include_owner_in_schedules') }}"
+      - name: can_member_pref_manager_edit_employees
+        description: "{{ doc('can_member_pref_manager_edit_employees') }}"
+      - name: is_member_pref_mobile_notification_enabled
+        description: "{{ doc('is_member_pref_mobile_notification_enabled') }}"
+      - name: is_member_pref_planning_hide_alerts_by_default
+        description: "{{ doc('is_member_pref_planning_hide_alerts_by_default') }}"
+      - name: is_member_pref_should_receive_mail_when_users_info_updated
+        description: "{{ doc('is_member_pref_should_receive_mail_when_users_info_updated') }}"
+      - name: is_member_pref_should_receive_planning_publication_reminder
+        description: "{{ doc('is_member_pref_should_receive_planning_publication_reminder') }}"
+      - name: is_member_pref_sms_notification_enabled
+        description: "{{ doc('is_member_pref_sms_notification_enabled') }}"
 
   - name: stg_seed_user_contracts
     description: Staging of contracts linking an employee (membership) to a location.

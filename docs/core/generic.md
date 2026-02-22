@@ -18,7 +18,7 @@ Start timestamp of the event (UTC).
 End timestamp of the event (UTC).
 {% enddocs %}
 
-{% docs time_zone %}
+{% docs timezone %}
 Timezone associated with the record.
 {% enddocs %}
 
@@ -51,6 +51,10 @@ Collective agreement id associated with the record.
 {% enddocs %}
 
 {% docs payroll_software_id %}
+to define
+{% enddocs %}
+
+{% docs partner_id %}
 to define
 {% enddocs %}
 
