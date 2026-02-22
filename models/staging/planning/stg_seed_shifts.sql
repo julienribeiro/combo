@@ -12,8 +12,6 @@ WITH final AS (
         updated_at AS shift_updated_at,
         starts_at AS shift_start_at,
         ends_at AS shift_end_at,
-        real_starts_at AS shift_real_start_at,
-        real_ends_at AS shift_real_end_at,
         validated_at AS shift_validated_at,
         planned_hours_last_edited_at AS shift_planned_hours_last_edited_at,
         locked_at AS shift_locked_at,
