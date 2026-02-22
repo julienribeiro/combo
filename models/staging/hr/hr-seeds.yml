@@ -47,42 +47,80 @@ models:
           - not_null
       - name: is_member_onboarded
         description: "{{ doc('is_member_onboarded') }}"
+        tests:
+          - not_null
       - name: can_member_manage_published_planning
         description: "{{ doc('can_member_manage_published_planning') }}"
+        tests:
+          - not_null
       - name: can_member_invalidate_shift
         description: "{{ doc('can_member_invalidate_shift') }}"
+        tests:
+          - not_null
       - name: can_member_remove_employee
         description: "{{ doc('can_member_remove_employee') }}"
+        tests:
+          - not_null
       - name: can_member_set_custom_rest_value
         description: "{{ doc('can_member_set_custom_rest_value') }}"
+        tests:
+          - not_null
       - name: has_member_enhanced_medical_examination
         description: "{{ doc('has_member_enhanced_medical_examination') }}"
+        tests:
+          - not_null
       - name: is_member_pref_admin_restrict_access_to_timeoff
         description: "{{ doc('is_member_pref_admin_restrict_access_to_timeoff') }}"
+        tests:
+          - not_null
       - name: is_member_pref_calendar_sync_enabled
         description: "{{ doc('is_member_pref_calendar_sync_enabled') }}"
+        tests:
+          - not_null
       - name: can_member_pref_write_paid_leave_ledger
         description: "{{ doc('can_member_pref_write_paid_leave_ledger') }}"
+        tests:
+          - not_null
       - name: is_member_pref_display_shifts_from_other_teams
         description: "{{ doc('is_member_pref_display_shifts_from_other_teams') }}"
+        tests:
+          - not_null
       - name: is_member_pref_email_notification_enabled
         description: "{{ doc('is_member_pref_email_notification_enabled') }}"
+        tests:
+          - not_null
       - name: has_member_pref_access_to_all_locations
         description: "{{ doc('has_member_pref_access_to_all_locations') }}"
+        tests:
+          - not_null
       - name: is_member_pref_include_owner_in_schedules
         description: "{{ doc('is_member_pref_include_owner_in_schedules') }}"
+        tests:
+          - not_null
       - name: can_member_pref_manager_edit_employees
         description: "{{ doc('can_member_pref_manager_edit_employees') }}"
+        tests:
+          - not_null
       - name: is_member_pref_mobile_notification_enabled
         description: "{{ doc('is_member_pref_mobile_notification_enabled') }}"
+        tests:
+          - not_null
       - name: is_member_pref_planning_hide_alerts_by_default
         description: "{{ doc('is_member_pref_planning_hide_alerts_by_default') }}"
+        tests:
+          - not_null
       - name: is_member_pref_should_receive_mail_when_users_info_updated
         description: "{{ doc('is_member_pref_should_receive_mail_when_users_info_updated') }}"
+        tests:
+          - not_null
       - name: is_member_pref_should_receive_planning_publication_reminder
         description: "{{ doc('is_member_pref_should_receive_planning_publication_reminder') }}"
+        tests:
+          - not_null
       - name: is_member_pref_sms_notification_enabled
         description: "{{ doc('is_member_pref_sms_notification_enabled') }}"
+        tests:
+          - not_null
 
   - name: stg_seed_user_contracts
     description: Staging of contracts linking an employee (membership) to a location.
@@ -92,7 +130,7 @@ models:
         tests:
           - unique
           - not_null
-      - name: membership_id
+      - name: user_contract_member_id
         description: "{{ doc('membership_id') }}"
         tests:
           - not_null
@@ -104,13 +142,59 @@ models:
         description: "{{ doc('account_id') }}"
         tests:
           - not_null
-      - name: contract_start_date
+      - name: user_contract_team_id
+        description: "{{ doc('team_id') }}"
+      - name: user_contract_partner_id
+        description: "{{ doc('partner_id') }}"
+      - name: user_contract_original_contract_id
+        description: "{{ doc('user_contract_original_contract_id') }}"
+      - name: user_contract_created_at
+        description: "{{ doc('created_at') }}"
+        tests:
+          - not_null
+      - name: user_contract_updated_at
+        description: "{{ doc('updated_at') }}"
+      - name: user_contract_start_date
         description: "{{ doc('contract_start_date') }}"
         tests:
           - not_null
-      - name: contract_end_date
+      - name: user_contract_end_date
         description: "{{ doc('contract_end_date') }}"
-      - name: contract_type
+      - name: user_contract_end_trial_date
+        description: "{{ doc('user_contract_end_trial_date') }}"
+      - name: user_contract_invitation_sent_at
+        description: "{{ doc('user_contract_invitation_sent_at') }}"
+      - name: user_contract_invitation_accepted_at
+        description: "{{ doc('user_contract_invitation_accepted_at') }}"
+      - name: user_contract_start_at
+        description: "{{ doc('user_contract_start_at') }}"
+      - name: user_contract_type
         description: "{{ doc('contract_type') }}"
-      - name: contract_time
+      - name: user_contract_time
         description: "{{ doc('contract_time') }}"
+      - name: user_contract_end_reason
+        description: "{{ doc('user_contract_end_reason') }}"
+      - name: user_contract_lastname
+        description: "{{ doc('lastname') }}"
+      - name: user_contract_firstname
+        description: "{{ doc('firstname') }}"
+      - name: user_contract_address
+        description: "{{ doc('address') }}"
+      - name: user_contract_birth_department_code
+        description: "{{ doc('user_contract_birth_department_code') }}"
+      - name: user_contract_object_type
+        description: "{{ doc('user_contract_object_type') }}"
+      - name: user_contract_working_days_in_week
+        description: "{{ doc('user_contract_working_days_in_week') }}"
+      - name: is_user_contract_daily_worker
+        description: "{{ doc('is_user_contract_daily_worker') }}"
+        tests:
+          - not_null
+      - name: is_user_contract_hidden_in_register
+        description: "{{ doc('is_user_contract_hidden_in_register') }}"
+        tests:
+          - not_null
+      - name: is_user_contract_virtual
+        description: "{{ doc('is_user_contract_virtual') }}"
+        tests:
+          - not_null

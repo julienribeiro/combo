@@ -26,10 +26,6 @@ Last name of the employee.
 Sorting index for displaying members in a specific order.
 {% enddocs %}
 
-{% docs street_address %}
-Street address of the member.
-{% enddocs %}
-
 {% docs member_pref_member_page_order_by %}
 Preference for ordering members on the member page.
 {% enddocs %}
