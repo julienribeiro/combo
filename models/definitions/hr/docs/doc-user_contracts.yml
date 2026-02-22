@@ -1,0 +1,79 @@
+version: 2
+
+models:
+  - name: def_user_contracts
+    description: Staging of contracts linking an employee (membership) to a location.
+    columns:
+      - name: user_contract_id
+        description: "{{ doc('user_contract_id') }}"
+        tests:
+          - unique
+          - not_null
+      - name: user_contract_member_id
+        description: "{{ doc('membership_id') }}"
+        tests:
+          - not_null
+      - name: location_id
+        description: "{{ doc('location_id') }}"
+        tests:
+          - not_null
+      - name: account_id
+        description: "{{ doc('account_id') }}"
+        tests:
+          - not_null
+      - name: user_contract_team_id
+        description: "{{ doc('team_id') }}"
+      - name: user_contract_partner_id
+        description: "{{ doc('partner_id') }}"
+      - name: user_contract_original_contract_id
+        description: "{{ doc('user_contract_original_contract_id') }}"
+      - name: user_contract_created_at
+        description: "{{ doc('created_at') }}"
+        tests:
+          - not_null
+      - name: user_contract_updated_at
+        description: "{{ doc('updated_at') }}"
+      - name: user_contract_start_date
+        description: "{{ doc('contract_start_date') }}"
+        tests:
+          - not_null
+      - name: user_contract_end_date
+        description: "{{ doc('contract_end_date') }}"
+      - name: user_contract_end_trial_date
+        description: "{{ doc('user_contract_end_trial_date') }}"
+      - name: user_contract_invitation_sent_at
+        description: "{{ doc('user_contract_invitation_sent_at') }}"
+      - name: user_contract_invitation_accepted_at
+        description: "{{ doc('user_contract_invitation_accepted_at') }}"
+      - name: user_contract_start_at
+        description: "{{ doc('user_contract_start_at') }}"
+      - name: user_contract_type
+        description: "{{ doc('contract_type') }}"
+      - name: user_contract_time
+        description: "{{ doc('contract_time') }}"
+      - name: user_contract_end_reason
+        description: "{{ doc('user_contract_end_reason') }}"
+      - name: user_contract_lastname
+        description: "{{ doc('lastname') }}"
+      - name: user_contract_firstname
+        description: "{{ doc('firstname') }}"
+      - name: user_contract_address
+        description: "{{ doc('address') }}"
+      - name: user_contract_birth_department_code
+        description: "{{ doc('user_contract_birth_department_code') }}"
+      - name: user_contract_object_type
+        description: "{{ doc('user_contract_object_type') }}"
+      - name: user_contract_working_days_in_week
+        description: "{{ doc('user_contract_working_days_in_week') }}"
+      - name: is_user_contract_daily_worker
+        description: "{{ doc('is_user_contract_daily_worker') }}"
+        tests:
+          - not_null
+      - name: is_user_contract_hidden_in_register
+        description: "{{ doc('is_user_contract_hidden_in_register') }}"
+        tests:
+          - not_null
+      - name: is_user_contract_virtual
+        description: "{{ doc('is_user_contract_virtual') }}"
+        tests:
+          - not_null

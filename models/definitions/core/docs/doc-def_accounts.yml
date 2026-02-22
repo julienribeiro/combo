@@ -1,0 +1,127 @@
+version: 2
+
+models:
+  - name: def_accounts
+    description: All accounts.
+    columns:
+      - name: account_id
+        description: "{{ doc('account_id') }}"
+        tests:
+          - unique
+          - not_null
+      - name: account_partner_id
+        description: "{{ doc('partner_id') }}"
+        tests:
+          - not_null
+      - name: account_collective_agreement_id
+        description: "{{ doc('collective_agreement_id') }}"
+        tests:
+          - not_null
+      - name: account_payroll_software_id
+        description: "{{ doc('payroll_software_id') }}"
+        tests:
+          - not_null
+          - accepted_values:
+              arguments: 
+                values: ['default', 'paie_rh', 'payfit', 'quadra_paie', 'silae']
+      - name: account_name
+        description: "{{ doc('account_name') }}"
+        tests:
+          - not_null
+      - name: account_created_at
+        description: "{{ doc('created_at') }}"
+        tests:
+          - not_null
+      - name: account_updated_at
+        description: "{{ doc('updated_at') }}"
+      - name: account_timezone
+        description: "{{ doc('timezone') }}"
+        tests:
+          - not_null
+      - name: account_default_language
+        description: "{{ doc('account_default_language') }}"
+        tests:
+          - not_null
+      - name: account_street
+        description: "{{ doc('street') }}"
+      - name: account_zipcode
+        description: "{{ doc('zipcode') }}"
+      - name: account_city
+        description: "{{ doc('city') }}"
+      - name: account_country
+        description: "{{ doc('country') }}"
+        tests:
+          - not_null
+          - accepted_values:
+              arguments: 
+                values: ['FR', 'ES', 'BE', 'NC']
+      - name: account_sheet_hour_cut
+        description: "{{ doc('sheet_hour_cut') }}"
+      - name: account_social_tax
+        description: "{{ doc('social_tax') }}"
+      - name: has_account_paid_breaks
+        description: "{{ doc('has_account_paid_breaks') }}"
+      - name: is_account_showing_real_and_planned_hours_on_planning
+        description: "{{ doc('is_account_showing_real_and_planned_hours_on_planning') }}"
+      - name: pref_currency_iso_code
+        description: "{{ doc('pref_currency_iso_code') }}"
+      - name: pref_planning_pdf_display_mode
+        description: "{{ doc('pref_planning_pdf_display_mode') }}"
+      - name: pref_quadra_paie_separator
+        description: "{{ doc('pref_quadra_paie_separator') }}"
+      - name: pref_productivity_objective
+        description: "{{ doc('pref_productivity_objective') }}"
+      - name: pref_minimum_days_for_timeoff_request
+        description: "{{ doc('pref_minimum_days_for_timeoff_request') }}"
+      - name: is_account_blocked
+        description: "{{ doc('is_blocked') }}"
+      - name: is_pref_allow_duplication_of_schedule_over_more_weeks
+        description: "{{ doc('is_pref_allow_duplication_of_schedule_over_more_weeks') }}"
+      - name: is_pref_automatically_generate_employee_ids
+        description: "{{ doc('is_pref_automatically_generate_employee_ids') }}"
+      - name: is_pref_director_can_read_paid_leave_dashboard
+        description: "{{ doc('is_pref_director_can_read_paid_leave_dashboard') }}"
+      - name: is_pref_directors_can_access_dashboard_rh
+        description: "{{ doc('is_pref_directors_can_access_dashboard_rh') }}"
+      - name: is_pref_display_rewards_on_memberpage
+        description: "{{ doc('is_pref_display_rewards_on_memberpage') }}"
+      - name: is_pref_display_shifts_from_other_teams
+        description: "{{ doc('is_pref_display_shifts_from_other_teams') }}"
+      - name: is_pref_display_signature_for_planning_pdf
+        description: "{{ doc('is_pref_display_signature_for_planning_pdf') }}"
+      - name: is_pref_display_sunday_for_planning_pdf
+        description: "{{ doc('is_pref_display_sunday_for_planning_pdf') }}"
+      - name: is_pref_display_week_hours_for_planning_pdf
+        description: "{{ doc('is_pref_display_week_hours_for_planning_pdf') }}"
+      - name: is_pref_employee_can_read_coworker_planning
+        description: "{{ doc('is_pref_employee_can_read_coworker_planning') }}"
+      - name: is_pref_employee_can_receive_sms_notification
+        description: "{{ doc('is_pref_employee_can_receive_sms_notification') }}"
+      - name: is_pref_conversation_enabled
+        description: "{{ doc('is_pref_conversation_enabled') }}"
+      - name: is_pref_hide_counters_alerts_planning_to_daily_worker
+        description: "{{ doc('is_pref_hide_counters_alerts_planning_to_daily_worker') }}"
+      - name: is_pref_hide_weekly_rests_planning_unpublished
+        description: "{{ doc('is_pref_hide_weekly_rests_planning_unpublished') }}"
+      - name: is_pref_hr_dashboard_access_granted
+        description: "{{ doc('is_pref_hr_dashboard_access_granted') }}"
+      - name: is_pref_include_over_hours_in_wages
+        description: "{{ doc('is_pref_include_over_hours_in_wages') }}"
+      - name: is_pref_meals_locked
+        description: "{{ doc('is_pref_meals_locked') }}"
+      - name: is_pref_manager_can_access_to_payroll
+        description: "{{ doc('is_pref_manager_can_access_to_payroll') }}"
+      - name: is_pref_manager_can_read_all_salaries
+        description: "{{ doc('is_pref_manager_can_read_all_salaries') }}"
+      - name: is_pref_manager_can_read_paid_leave_dashboard
+        description: "{{ doc('is_pref_manager_can_read_paid_leave_dashboard') }}"
+      - name: is_pref_manager_created_employees_plannable
+        description: "{{ doc('is_pref_manager_created_employees_plannable') }}"
+      - name: is_pref_prevent_overlapping_pay_periods
+        description: "{{ doc('is_pref_prevent_overlapping_pay_periods') }}"
+      - name: is_pref_report_evened_out_by_default
+        description: "{{ doc('is_pref_report_evened_out_by_default') }}"
+      - name: is_pref_send_activities_report_mail_to_owner
+        description: "{{ doc('is_pref_send_activities_report_mail_to_owner') }}"
+      - name: is_pref_using_timeclock
+        description: "{{ doc('is_pref_using_timeclock') }}"
