@@ -1,4 +1,29 @@
+# macOS
+.DS_Store
 
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.env
+.venv/
+env/
+*.egg-info/
+*.egg
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Logs
+*.log
+
+# DBT
 target/
 dbt_packages/
 logs/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# VS Code
+.vscode/
