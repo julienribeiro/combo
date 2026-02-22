@@ -28,7 +28,7 @@ WITH final AS (
         is_user_contract_hidden_in_register,
         is_user_contract_virtual
     FROM
-        {{ ref('stg_seed_user_contracts') }}
+        {{ ref('def_user_contracts') }}
 )
 
 SELECT *

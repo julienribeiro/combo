@@ -1,7 +1,7 @@
 WITH final AS (
     SELECT
         id AS user_contract_id,
-        membership_id AS user_contract_member_id,
+        membership_id AS member_id,
         location_id,
         account_id,
         team_id AS user_contract_team_id,

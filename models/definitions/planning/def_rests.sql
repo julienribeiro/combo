@@ -6,6 +6,7 @@ WITH final AS (
         rest_original_shift_id,
         account_id,
         partner_id,
+        'rest' AS event_type,
         rest_created_at,
         rest_updated_at,
         rest_start_at,

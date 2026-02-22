@@ -1,8 +1,8 @@
 version: 2
 
 models:
-  - name: def_rests
-    description: Staging of planned rest periods for employees.
+  - name: mart_rests
+    description: All rests
     columns:
       - name: rest_id
         description: "{{ doc('rest_id') }}"
@@ -23,6 +23,8 @@ models:
           - not_null
       - name: partner_id
         description: "{{ doc('partner_id') }}"
+      - name: event_type
+        description: "{{ doc('event_type') }}"
       - name: rest_created_at
         description: "{{ doc('created_at') }}"
         tests:

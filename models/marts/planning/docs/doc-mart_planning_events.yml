@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: mart_planning_events
+    description: All planning events (shifts & rests)
+    columns:
+      - name: event_id
+        description: "{{ doc('event_id') }}"
+        tests:
+          - unique
+          - not_null
+      - name: user_contract_id
+        description: "{{ doc('user_contract_id') }}"
+        tests:
+          - not_null
+      - name: location_id
+        description: "{{ doc('location_id') }}"
+        tests:
+          - not_null
+      - name: account_id
+        description: "{{ doc('account_id') }}"
+        tests:
+          - not_null
+      - name: event_start_at
+        description: "{{ doc('start_at') }}"
+      - name: event_ent_at
+        description: "{{ doc('end_at') }}"
+      - name: event_type
+        description: "{{ doc('event_type') }}"
+        tests:
+          - not_null

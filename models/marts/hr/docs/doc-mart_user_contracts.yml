@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: def_user_contracts
+  - name: mart_user_contracts
     description: Staging of contracts linking an employee (membership) to a location.
     columns:
       - name: user_contract_id

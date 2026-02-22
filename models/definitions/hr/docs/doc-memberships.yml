@@ -5,7 +5,7 @@ models:
     description: Staging of employee memberships registered in the system.
     columns:
       - name: member_id
-        description: "{{ doc('membership_id') }}"
+        description: "{{ doc('member_id') }}"
         tests:
           - unique
           - not_null

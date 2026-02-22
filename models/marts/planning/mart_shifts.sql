@@ -8,7 +8,7 @@ WITH final AS (
         partner_id,
         shift_validator_id,
         shift_planned_hours_last_edited_by_id,
-        'shift' AS event_type,
+        event_type,
         shift_created_at,
         shift_updated_at,
         shift_start_at,
@@ -21,7 +21,7 @@ WITH final AS (
         shift_real_break_duration,
         is_shift_did_not_show
     FROM
-        {{ ref('stg_seed_shifts') }}
+        {{ ref('def_shifts') }}
 )
 
 SELECT *

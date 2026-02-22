@@ -1,0 +1,82 @@
+version: 2
+
+models:
+  - name: mart_locations
+    description: All locations
+    columns:
+      - name: location_id
+        description: "{{ doc('location_id') }}"
+        tests:
+          - unique
+          - not_null
+      - name: location_partner_id
+        description: "{{ doc('partner_id') }}"
+      - name: location_collective_agreement_id
+        description: "{{ doc('collective_agreement_id') }}"
+      - name: location_payroll_software_id
+        description: "{{ doc('payroll_software_id') }}"
+      - name: account_id
+        description: "{{ doc('account_id') }}"
+        tests:
+          - not_null
+      - name: location_name
+        description: "{{ doc('location_name') }}"
+      - name: location_created_at
+        description: "{{ doc('created_at') }}"
+        tests:
+          - not_null
+      - name: location_updated_at
+        description: "{{ doc('updated_at') }}"
+      - name: location_address
+        description: "{{ doc('address') }}"
+        tests:
+          - not_null
+      - name: location_zipcode
+        description: "{{ doc('zipcode') }}"
+      - name: location_city
+        description: "{{ doc('city') }}"
+      - name: location_country
+        description: "{{ doc('country') }}"
+      - name: location_default_break_duration
+        description: "{{ doc('location_default_break_duration') }}"
+      - name: location_public_holiday_overtime_rate
+        description: "{{ doc('location_public_holiday_overtime_rate') }}"
+      - name: location_public_holiday_paid_by_default
+        description: "{{ doc('location_public_holiday_paid_by_default') }}"
+      - name: location_type
+        description: "{{ doc('location_type') }}"
+        tests:
+          - not_null
+          - accepted_values:
+              arguments: 
+                values: ['to_be_opened', 'planning_test', 'closed', 'holding', 'regular']
+      - name: location_minimum_shift_duration_for_automatic_breaks_in_hours
+        description: "{{ doc('location_minimum_shift_duration_for_automatic_breaks_in_hours') }}"
+      - name: location_pref_default_meal_type
+        description: "{{ doc('location_pref_default_meal_type') }}"
+      - name: location_pref_productivity_objective
+        description: "{{ doc('location_pref_productivity_objective') }}"
+      - name: location_pref_wage_ratio_objective
+        description: "{{ doc('location_pref_wage_ratio_objective') }}"
+      - name: location_pref_workable_days_in_week
+        description: "{{ doc('location_pref_workable_days_in_week') }}"
+      - name: location_pref_starting_month_for_annualisation
+        description: "{{ doc('location_pref_starting_month_for_annualisation') }}"
+      - name: is_location_archived
+        description: "{{ doc('is_location_archived') }}"
+      - name: is_location_public_holiday_configuration_enabled
+        description: "{{ doc('is_location_public_holiday_configuration_enabled') }}"
+      - name: is_location_public_holiday_paid_by_default
+        description: "{{ doc('is_location_public_holiday_paid_by_default') }}"
+      - name: has_location_pref_negative_compensatory_counter
+        description: "{{ doc('has_location_pref_negative_compensatory_counter') }}"
+      - name: is_location_pref_annualisation_enabled
+        description: "{{ doc('is_location_pref_annualisation_enabled') }}"
+      - name: is_location_pref_annualisation_using_calendar_year
+        description: "{{ doc('is_location_pref_annualisation_using_calendar_year') }}"
+      - name: is_location_pref_modulation_enabled
+        description: "{{ doc('is_location_pref_modulation_enabled') }}"
+      - name: is_location_pref_skip_percentage_for_compensatory_deposit
+        description: "{{ doc('is_location_pref_skip_percentage_for_compensatory_deposit') }}"
+      - name: is_location_pref_using_timeclock
+        description: "{{ doc('is_location_pref_using_timeclock') }}"

@@ -1,8 +1,8 @@
 version: 2
 
 models:
-  - name: def_shifts
-    description: Staging of planned work shifts for employees.
+  - name: mart_shifts
+    description: All shifts
     columns:
       - name: shift_id
         description: "{{ doc('shift_id') }}"
@@ -27,6 +27,8 @@ models:
         description: "{{ doc('shift_validator_id') }}"
       - name: shift_planned_hours_last_edited_by_id
         description: "{{ doc('shift_planned_hours_last_edited_by_id') }}"
+      - name: event_type
+        description: "{{ doc('event_type') }}"
       - name: shift_created_at
         description: "{{ doc('created_at') }}"
         tests:

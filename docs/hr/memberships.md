@@ -1,4 +1,4 @@
-{% docs membership_id %}
+{% docs member_id %}
 Unique identifier of the membership (link between a user and an account).
 {% enddocs %}
 

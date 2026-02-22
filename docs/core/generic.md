@@ -58,5 +58,13 @@ to define
 to define
 {% enddocs %}
 
+{% docs event_type %}
+shift or rest
+{% enddocs %}
+
+{% docs event_id %}
+Id of the event (shift or rest)
+{% enddocs %}
+
 
 
