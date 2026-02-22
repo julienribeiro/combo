@@ -14,20 +14,50 @@ models:
         description: "{{ doc('user_contract_id') }}"
         tests:
           - not_null
+      - name: shift_weekly_schedule_id
+        description: "{{ doc('shift_weekly_schedule_id') }}"
+      - name: shift_label_id
+        description: "{{ doc('shift_label_id') }}"
       - name: account_id
         description: "{{ doc('account_id') }}"
         tests:
           - not_null
-      - name: starts_at
+      - name: partner_id
+        description: "{{ doc('partner_id') }}"
+      - name: shift_validator_id
+        description: "{{ doc('shift_validator_id') }}"
+      - name: shift_planned_hours_last_edited_by_id
+        description: "{{ doc('shift_planned_hours_last_edited_by_id') }}"
+      - name: shift_created_at
+        description: "{{ doc('created_at') }}"
+        tests:
+          - not_null
+      - name: shift_updated_at
+        description: "{{ doc('updated_at') }}"
+      - name: shift_start_at
         description: "{{ doc('start_at') }}"
         tests:
           - not_null
-      - name: ends_at
+      - name: shift_end_at
         description: "{{ doc('end_at') }}"
         tests:
           - not_null
-      - name: planification_type
+      - name: shift_validated_at
+        description: "{{ doc('shift_validated_at') }}"
+      - name: shift_planned_hours_last_edited_at
+        description: "{{ doc('shift_planned_hours_last_edited_at') }}"
+      - name: shift_locked_at
+        description: "{{ doc('shift_locked_at') }}"
+      - name: shift_planification_type
         description: "{{ doc('planification_type') }}"
+      - name: shift_break_duration
+        description: "{{ doc('shift_break_duration') }}"
+      - name: shift_real_break_duration
+        description: "{{ doc('shift_real_break_duration') }}"
+      - name: is_shift_did_not_show
+        description: "{{ doc('is_shift_did_not_show') }}"
+        tests:
+          - not_null
 
   - name: stg_seed_rests
     description: Staging of planned rest periods for employees.
@@ -41,15 +71,27 @@ models:
         description: "{{ doc('user_contract_id') }}"
         tests:
           - not_null
+      - name: rest_timeoff_id
+        description: "{{ doc('rest_timeoff_id') }}"
+      - name: rest_original_shift_id
+        description: "{{ doc('rest_original_shift_id') }}"
       - name: account_id
         description: "{{ doc('account_id') }}"
         tests:
           - not_null
-      - name: starts_at
+      - name: partner_id
+        description: "{{ doc('partner_id') }}"
+      - name: rest_created_at
+        description: "{{ doc('created_at') }}"
+        tests:
+          - not_null
+      - name: rest_updated_at
+        description: "{{ doc('updated_at') }}"
+      - name: rest_start_at
         description: "{{ doc('start_at') }}"
         tests:
           - not_null
-      - name: ends_at
+      - name: rest_end_at
         description: "{{ doc('end_at') }}"
         tests:
           - not_null
