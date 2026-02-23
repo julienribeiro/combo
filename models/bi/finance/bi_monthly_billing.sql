@@ -1,6 +1,6 @@
 WITH weekly_metrics AS (
     SELECT
-        week_start,
+        week_start_date,
         account_id,
         location_id,
         nb_billable_employees,
@@ -11,7 +11,7 @@ WITH weekly_metrics AS (
 
 monthly_avg AS (
     SELECT
-        DATE_TRUNC(week_start, MONTH) AS month_start,
+        DATE_TRUNC(week_start_date, MONTH) AS month_start_date,
         account_id,
         location_id,
         CAST(FLOOR(AVG(nb_billable_employees)) AS INT64) AS avg_billable_employees,
@@ -23,20 +23,18 @@ monthly_avg AS (
 
 final AS (
     SELECT
-        month_start,
+        month_start_date,
         account_id,
         location_id,
         avg_billable_employees,
         avg_active_contracts,
         {{ location_size('avg_billable_employees') }} AS location_size,
         {{ legacy_fixed_pricing('avg_active_contracts') }} AS legacy_monthly_revenue,
-        {{ consumption_pricing('avg_billable_employees') }} AS consumption_monthly_revenue
+        {{ consumption_pricing('avg_billable_employees') }} AS consumption_monthly_revenue,
+        ROUND({{ consumption_pricing('avg_billable_employees') }} - {{ legacy_fixed_pricing('avg_active_contracts') }}, 2) AS revenue_variation
     FROM
         monthly_avg
 )
 
-SELECT
-    *,
-    ROUND(consumption_monthly_revenue - legacy_monthly_revenue, 2) AS revenue_variation
-FROM
-    final
+SELECT *
+FROM final

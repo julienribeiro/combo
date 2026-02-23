@@ -2,7 +2,7 @@
 
 WITH monthly_billing AS (
     SELECT
-        month_start,
+        month_start_date,
         account_id,
         location_id,
         avg_billable_employees,
@@ -38,9 +38,7 @@ locations AS (
 
 final AS (
     SELECT
-        monthly_billing.month_start,
-        EXTRACT(QUARTER FROM monthly_billing.month_start) AS quarter,
-        EXTRACT(YEAR FROM monthly_billing.month_start) AS year,
+        monthly_billing.month_start_date,
         monthly_billing.account_id,
         accounts.account_name,
         accounts.account_country,
@@ -57,12 +55,12 @@ final AS (
         monthly_billing.consumption_monthly_revenue,
         monthly_billing.revenue_variation,
         CASE
-            WHEN monthly_billing.month_start < '2023-01-01'
+            WHEN monthly_billing.month_start_date < '2023-01-01'
                 THEN monthly_billing.legacy_monthly_revenue
             ELSE monthly_billing.consumption_monthly_revenue
         END AS actual_monthly_revenue,
         CASE
-            WHEN monthly_billing.month_start < '2023-01-01'
+            WHEN monthly_billing.month_start_date < '2023-01-01'
                 THEN 'legacy'
             ELSE 'consumption'
         END AS pricing_model

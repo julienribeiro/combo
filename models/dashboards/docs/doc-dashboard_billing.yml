@@ -1,0 +1,77 @@
+version: 2
+
+models:
+  - name: dashboard_billing
+    description: >
+      Final dashboard table for CFO and Head of Sales, combining monthly billing metrics
+      with account and location dimensions. Provides both legacy and consumption-based
+      revenue calculations, and determines the actual revenue based on the applicable
+      pricing model (legacy before 2023, consumption from 2023 onwards).
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - month_start_date
+              - account_id
+              - location_id
+    columns:
+      - name: month_start_date
+        description: "{{ doc('month_start_date') }}"
+        tests:
+          - not_null
+      - name: account_id
+        description: "{{ doc('account_id') }}"
+        tests:
+          - not_null
+      - name: account_name
+        description: "{{ doc('account_name') }}"
+      - name: account_country
+        description: "{{ doc('country') }}"
+      - name: account_city
+        description: "{{ doc('city') }}"
+      - name: location_id
+        description: "{{ doc('location_id') }}"
+        tests:
+          - not_null
+      - name: location_name
+        description: "{{ doc('location_name') }}"
+      - name: location_city
+        description: "{{ doc('city') }}"
+      - name: location_zipcode
+        description: "{{ doc('zipcode') }}"
+      - name: location_country
+        description: "{{ doc('country') }}"
+      - name: avg_billable_employees
+        description: "{{ doc('avg_billable_employees') }}"
+        tests:
+          - not_null
+      - name: avg_active_contracts
+        description: "{{ doc('avg_active_contracts') }}"
+        tests:
+          - not_null
+      - name: location_size
+        description: "{{ doc('location_size') }}"
+        tests:
+          - not_null
+      - name: legacy_monthly_revenue
+        description: "{{ doc('location_size') }}"
+        tests:
+          - not_null
+      - name: consumption_monthly_revenue
+        description: "{{ doc('consumption_monthly_revenue') }}"
+        tests:
+          - not_null
+      - name: revenue_variation
+        description: "{{ doc('revenue_variation') }}"
+        tests:
+          - not_null
+      - name: actual_monthly_revenue
+        description: "{{ doc('actual_monthly_revenue') }}"
+        tests:
+          - not_null
+      - name: pricing_model
+        description: >
+          Indicates which pricing model applies for the period.
+          legacy = before 2023, consumption = from 2023 onwards.
+        tests:
+          - not_null

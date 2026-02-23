@@ -1,13 +1,14 @@
 version: 2
 
 models:
-  - name: mart_planning_events_by_week
-    description: Planning events exploded at weekly grain (1 row per event per week_start, week starting on Monday).
+  - name: mart_planning_events_weekly_exploded
+    description: Planning events exploded at weekly grain (1 row per event per week_start_date, week starting on Monday).
     tests:
       - dbt_utils.unique_combination_of_columns:
-          combination_of_columns:
-            - event_id
-            - week_start
+          arguments:
+            combination_of_columns:
+              - event_id
+              - week_start_date
     columns:
       - name: event_id
         description: "{{ doc('event_id') }}"
@@ -29,7 +30,7 @@ models:
         description: "{{ doc('event_type') }}"
         tests:
           - not_null
-      - name: week_start
-        description: "{{ doc('week_start') }}"
+      - name: week_start_date
+        description: "{{ doc('week_start_date') }}"
         tests:
           - not_null

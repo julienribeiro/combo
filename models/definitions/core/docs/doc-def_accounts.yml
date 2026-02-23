@@ -9,7 +9,7 @@ models:
         tests:
           - unique
           - not_null
-      - name: account_partner_id
+      - name: partner_id
         description: "{{ doc('partner_id') }}"
         tests:
           - not_null

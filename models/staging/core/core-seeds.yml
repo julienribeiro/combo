@@ -9,7 +9,7 @@ models:
         tests:
           - unique
           - not_null
-      - name: account_partner_id
+      - name: partner_id
         description: "{{ doc('partner_id') }}"
         tests:
           - not_null
@@ -134,7 +134,7 @@ models:
         tests:
           - unique
           - not_null
-      - name: location_partner_id
+      - name: partner_id
         description: "{{ doc('partner_id') }}"
       - name: location_collective_agreement_id
         description: "{{ doc('collective_agreement_id') }}"

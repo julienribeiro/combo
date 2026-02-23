@@ -18,7 +18,7 @@ final AS (
         planning_events.location_id,
         planning_events.account_id,
         planning_events.event_type,
-        week_start
+        week_start_date
     FROM 
         planning_events
     CROSS JOIN UNNEST(
@@ -27,7 +27,7 @@ final AS (
             DATE_TRUNC(DATE(planning_events.event_end_at), WEEK(MONDAY)),
             INTERVAL 7 DAY
         )
-    ) AS week_start
+    ) AS week_start_date
 )
 
 SELECT

@@ -1,0 +1,37 @@
+version: 2
+
+models:
+  - name: bi_weekly_billing_metrics
+    description: >
+      Weekly billing metrics per location, combining the number of billable employees
+      (those with at least one shift or rest planned during the week) and the number
+      of active contracts (all contracts covering the week, regardless of planning activity).
+      Includes weeks with zero activity thanks to the week-location spine.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - week_start_date
+              - account_id
+              - location_id
+    columns:
+      - name: week_start_date
+        description: "{{ doc('week_start_date') }}"
+        tests:
+          - not_null
+      - name: account_id
+        description: "{{ doc('account_id') }}"
+        tests:
+          - not_null
+      - name: location_id
+        description: "{{ doc('location_id') }}"
+        tests:
+          - not_null
+      - name: nb_billable_employees
+        description: "{{ doc('nb_billable_employees') }}"
+        tests:
+          - not_null
+      - name: nb_active_contracts
+        description: "{{ doc('nb_active_contracts') }}"
+        tests:
+          - not_null

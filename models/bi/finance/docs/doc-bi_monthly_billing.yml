@@ -1,0 +1,52 @@
+version: 2
+
+models:
+  - name: bi_monthly_billing
+    description: >
+      Monthly billing metrics per location, computed as the floor of the weekly average
+      of billable employees and active contracts. Applies both pricing models
+      (legacy fixed and consumption-based) to enable revenue comparison and impact analysis.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - month_start
+              - account_id
+              - location_id
+    columns:
+      - name: month_start
+        description: First day of the month.
+        tests:
+          - not_null
+      - name: account_id
+        description: "{{ doc('account_id') }}"
+        tests:
+          - not_null
+      - name: location_id
+        description: "{{ doc('location_id') }}"
+        tests:
+          - not_null
+      - name: avg_billable_employees
+        description: "{{ doc('avg_billable_employees') }}"
+        tests:
+          - not_null
+      - name: avg_active_contracts
+        description: "{{ doc('avg_active_contracts') }}"
+        tests:
+          - not_null
+      - name: location_size
+        description: "{{ doc('avg_active_contracts') }}"
+        tests:
+          - not_null
+      - name: legacy_monthly_revenue
+        description: "{{ doc('legacy_monthly_revenue') }}"
+        tests:
+          - not_null
+      - name: consumption_monthly_revenue
+        description: "{{ doc('consumption_monthly_revenue') }}"
+        tests:
+          - not_null
+      - name: revenue_variation
+        description: "{{ doc('revenue_variation') }}"
+        tests:
+          - not_null

@@ -5,7 +5,7 @@ WITH final AS (
         location_id,
         account_id,
         team_id AS user_contract_team_id,
-        partner_id AS user_contract_partner_id,
+        partner_id,
         original_contract_id AS user_contract_original_contract_id,
         created_at AS user_contract_created_at,
         updated_at AS user_contract_updated_at,

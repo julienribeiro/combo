@@ -1,6 +1,6 @@
 WITH weekly_employees AS (
     SELECT
-        week_start,
+        week_start_date,
         account_id,
         location_id,
         COUNT(DISTINCT user_contract_id) AS nb_billable_employees
@@ -21,7 +21,7 @@ user_contracts AS (
 
 week_location_spine AS (
     SELECT 
-        week_start,
+        week_start_date,
         account_id,
         location_id
     FROM
@@ -30,7 +30,7 @@ week_location_spine AS (
 
 weekly_active_contracts AS (
     SELECT
-        week_location_spine.week_start,
+        week_location_spine.week_start_date,
         week_location_spine.location_id,
         COUNT(DISTINCT user_contracts.user_contract_id) AS nb_active_contracts
     FROM
@@ -40,14 +40,14 @@ weekly_active_contracts AS (
         ON 
             week_location_spine.location_id = user_contracts.location_id
     WHERE
-        DATE(user_contracts.user_contract_start_date) <= DATE_ADD(week_location_spine.week_start, INTERVAL 6 DAY)
-        AND (user_contracts.user_contract_end_date IS NULL OR DATE(user_contracts.user_contract_end_date) >= week_location_spine.week_start)
+        DATE(user_contracts.user_contract_start_date) <= DATE_ADD(week_location_spine.week_start_date, INTERVAL 6 DAY)
+        AND (user_contracts.user_contract_end_date IS NULL OR DATE(user_contracts.user_contract_end_date) >= week_location_spine.week_start_date)
     GROUP BY 1, 2
 ),
 
 final AS (
     SELECT
-        week_location_spine.week_start,
+        week_location_spine.week_start_date,
         week_location_spine.account_id,
         week_location_spine.location_id,
         COALESCE(weekly_employees.nb_billable_employees, 0) AS nb_billable_employees,
@@ -57,13 +57,13 @@ final AS (
     LEFT JOIN 
         weekly_employees
         ON 
-            week_location_spine.week_start = weekly_employees.week_start
+            week_location_spine.week_start_date = weekly_employees.week_start_date
             AND week_location_spine.account_id = weekly_employees.account_id
             AND week_location_spine.location_id = weekly_employees.location_id
     LEFT JOIN
         weekly_active_contracts
         ON
-            week_location_spine.week_start = weekly_active_contracts.week_start
+            week_location_spine.week_start_date = weekly_active_contracts.week_start_date
             AND week_location_spine.location_id = weekly_active_contracts.location_id
 )
 

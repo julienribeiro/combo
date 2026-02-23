@@ -3,7 +3,7 @@ WITH planning_events_enriched AS (
         user_contract_id,
         location_id,
         account_id,
-        week_start
+        week_start_date
     FROM
         {{ ref('mart_planning_events_weekly_exploded') }}
 ),
@@ -18,7 +18,7 @@ locations AS (
 
 final AS (
     SELECT DISTINCT
-        week_start,
+        week_start_date,
         planning_events_enriched.account_id,
         planning_events_enriched.location_id,
         planning_events_enriched.user_contract_id

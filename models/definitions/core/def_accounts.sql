@@ -1,7 +1,7 @@
 WITH final AS (
     SELECT
         account_id,
-        account_partner_id,
+        partner_id,
         account_collective_agreement_id,
         account_payroll_software_id,
         account_name,

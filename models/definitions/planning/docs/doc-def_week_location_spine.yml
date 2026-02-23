@@ -1,12 +1,11 @@
 version: 2
 
 models:
-  - name: mart_weekly_billable_employees
+  - name: def_week_location_spine
     description: >
-      Distinct billable employees per location per week. An employee (user_contract_id)
-      is considered billable on their contract location if they have at least one
-      planning event (shift or rest) during the week, regardless of where the event
-      took place. Only non-archived locations are included.
+      Reference table generating all combinations of week x active location.
+      Used as a backbone to ensure the presence of weeks with zero activity
+      in billing metrics.
     tests:
       - dbt_utils.unique_combination_of_columns:
           arguments:
@@ -14,7 +13,6 @@ models:
               - week_start_date
               - account_id
               - location_id
-              - user_contract_id
     columns:
       - name: week_start_date
         description: "{{ doc('week_start_date') }}"
@@ -26,9 +24,5 @@ models:
           - not_null
       - name: location_id
         description: "{{ doc('location_id') }}"
-        tests:
-          - not_null
-      - name: user_contract_id
-        description: "{{ doc('user_contract_id') }}"
         tests:
           - not_null

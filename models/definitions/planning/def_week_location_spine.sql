@@ -1,13 +1,13 @@
 WITH dates AS (
     SELECT 
-        MIN(DATE_TRUNC(DATE(week_start), WEEK(MONDAY))) AS min_event_date,
-        MAX(DATE_TRUNC(DATE(week_start), WEEK(MONDAY))) AS max_event_date
+        MIN(DATE_TRUNC(DATE(week_start_date), WEEK(MONDAY))) AS min_event_date,
+        MAX(DATE_TRUNC(DATE(week_start_date), WEEK(MONDAY))) AS max_event_date
     FROM
         {{ ref('mart_planning_events_weekly_exploded') }}
 ),
 
 weeks AS (
-    SELECT week_start
+    SELECT week_start_date
     FROM dates
     CROSS JOIN UNNEST(
         GENERATE_DATE_ARRAY(
@@ -15,7 +15,7 @@ weeks AS (
             dates.max_event_date,
             INTERVAL 7 DAY
         )
-    ) AS week_start
+    ) AS week_start_date
 ),
 
 active_locations AS (
@@ -30,7 +30,7 @@ active_locations AS (
 
 final AS (
     SELECT
-        weeks.week_start,
+        weeks.week_start_date,
         active_locations.account_id,
         active_locations.location_id
     FROM weeks

@@ -1,7 +1,7 @@
 WITH final AS (
     SELECT
         location_id,
-        location_partner_id,
+        partner_id,
         location_collective_agreement_id,
         location_payroll_software_id,
         account_id,

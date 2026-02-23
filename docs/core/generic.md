@@ -66,8 +66,12 @@ shift or rest
 Id of the event (shift or rest)
 {% enddocs %}
 
-{% docs week_start %}
+{% docs week_start_date %}
 Start of the week, always MONDAY
+{% enddocs %}
+
+{% docs month_start_date %}
+Start of the month
 {% enddocs %}
 
 
