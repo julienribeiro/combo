@@ -50,3 +50,13 @@ negative means less (contraction).
 Revenue based on the applicable pricing model for the period.
 Legacy pricing before 2023, consumption-based pricing from 2023 onwards.
 {% enddocs %}
+
+{% docs consumption_weekly_revenue %}
+Weekly revenue under the consumption-based pricing model,
+calculated from avg_billable_employees (base price + extra employees cost).
+{% enddocs %}
+
+{% docs legacy_weekly_revenue %}
+Weekly revenue under the legacy fixed pricing model,
+calculated from avg_active_contracts.
+{% enddocs %}

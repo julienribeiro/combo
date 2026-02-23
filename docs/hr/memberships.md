@@ -105,3 +105,7 @@ Whether the member should receive planning publication reminders.
 {% docs is_member_pref_sms_notification_enabled %}
 Whether SMS notifications are enabled for this member.
 {% enddocs %}
+
+{% docs member_role %}
+Role of the member.
+{% enddocs %}

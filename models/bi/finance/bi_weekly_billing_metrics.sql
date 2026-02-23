@@ -9,7 +9,7 @@ WITH weekly_employees AS (
     GROUP BY 1, 2, 3
 ),
 
-user_contracts AS (
+billable_user_contracts AS (
     SELECT
         user_contract_id,
         location_id,
@@ -17,6 +17,8 @@ user_contracts AS (
         user_contract_end_date
     FROM
         {{ ref('mart_user_contracts') }}
+    WHERE 
+        is_billable_user_contract
 ),
 
 week_location_spine AS (
@@ -32,20 +34,20 @@ weekly_active_contracts AS (
     SELECT
         week_location_spine.week_start_date,
         week_location_spine.location_id,
-        COUNT(DISTINCT user_contracts.user_contract_id) AS nb_active_contracts
+        COUNT(DISTINCT billable_user_contracts.user_contract_id) AS nb_active_contracts
     FROM
         week_location_spine
     INNER JOIN
-        user_contracts
+        billable_user_contracts
         ON 
-            week_location_spine.location_id = user_contracts.location_id
+            week_location_spine.location_id = billable_user_contracts.location_id
     WHERE
-        DATE(user_contracts.user_contract_start_date) <= DATE_ADD(week_location_spine.week_start_date, INTERVAL 6 DAY)
-        AND (user_contracts.user_contract_end_date IS NULL OR DATE(user_contracts.user_contract_end_date) >= week_location_spine.week_start_date)
+        DATE(billable_user_contracts.user_contract_start_date) <= DATE_ADD(week_location_spine.week_start_date, INTERVAL 6 DAY)
+        AND (billable_user_contracts.user_contract_end_date IS NULL OR DATE(billable_user_contracts.user_contract_end_date) >= week_location_spine.week_start_date)
     GROUP BY 1, 2
 ),
 
-final AS (
+weekly_location_metrics AS (
     SELECT
         week_location_spine.week_start_date,
         week_location_spine.account_id,
@@ -65,6 +67,19 @@ final AS (
         ON
             week_location_spine.week_start_date = weekly_active_contracts.week_start_date
             AND week_location_spine.location_id = weekly_active_contracts.location_id
+),
+
+final AS (
+    SELECT
+        week_start_date,
+        account_id,
+        location_id,
+        nb_billable_employees,
+        nb_active_contracts,
+        {{ consumption_pricing('nb_billable_employees') }} AS consumption_weekly_revenue,
+        {{ legacy_fixed_pricing('nb_active_contracts') }} AS legacy_weekly_revenue
+    FROM
+        weekly_location_metrics
 )
 
 SELECT *

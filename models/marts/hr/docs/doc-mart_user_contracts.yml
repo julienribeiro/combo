@@ -47,6 +47,10 @@ models:
         description: "{{ doc('user_contract_invitation_accepted_at') }}"
       - name: user_contract_start_at
         description: "{{ doc('user_contract_start_at') }}"
+      - name: member_role
+        description: "{{ doc('member_role') }}"
+      - name: is_billable_user_contract
+        description: "{{ doc('is_billable_user_contract') }}"
       - name: user_contract_type
         description: "{{ doc('contract_type') }}"
       - name: user_contract_time

@@ -35,3 +35,11 @@ models:
         description: "{{ doc('nb_active_contracts') }}"
         tests:
           - not_null
+      - name: consumption_weekly_revenue
+        description: "{{ doc('consumption_weekly_revenue') }}"
+        tests:
+          - not_null
+      - name: legacy_weekly_revenue
+        description: "{{ doc('legacy_weekly_revenue') }}"
+        tests:
+          - not_null

@@ -73,3 +73,7 @@ Whether this contract should be hidden in the employee register.
 {% docs is_user_contract_virtual %}
 Whether this is a virtual contract (not a real employment contract, used for testing or special purposes).
 {% enddocs %}
+
+{% docs is_billable_user_contract %}
+Only employees and managers are billable.
+{% enddocs %}
