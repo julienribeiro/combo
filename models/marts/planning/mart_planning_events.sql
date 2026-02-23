@@ -32,7 +32,7 @@ user_contracts AS (
 final AS (
     SELECT 
         planning_events.event_id,
-        planning_events.user_contract_id,
+        user_contracts.user_contract_id,
         user_contracts.location_id,
         user_contracts.account_id,
         planning_events.event_start_at,
@@ -40,7 +40,7 @@ final AS (
         planning_events.event_type
     FROM
         planning_events
-    INNER JOIN 
+    LEFT JOIN 
         user_contracts
         ON 
             planning_events.user_contract_id = user_contracts.user_contract_id

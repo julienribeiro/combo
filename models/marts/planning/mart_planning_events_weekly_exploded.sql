@@ -9,6 +9,8 @@ WITH planning_events AS (
         event_type
     FROM
         {{ ref('mart_planning_events') }}
+    WHERE 
+        user_contract_id IS NOT NULL
 ),
 
 final AS (
