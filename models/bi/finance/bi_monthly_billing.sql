@@ -6,7 +6,7 @@ WITH weekly_metrics AS (
         nb_billable_employees,
         nb_active_contracts
     FROM
-        {{ ref('bi_weekly_billing_metrics') }}
+        {{ ref('bi_weekly_billing') }}
 ),
 
 monthly_avg AS (

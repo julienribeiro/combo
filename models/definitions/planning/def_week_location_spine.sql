@@ -1,6 +1,6 @@
 WITH dates AS (
     SELECT 
-        MIN(DATE_TRUNC(DATE(week_start_date), WEEK(MONDAY))) AS min_event_date,
+        DATE('2023-01-02') AS min_event_date,
         MAX(DATE_TRUNC(DATE(week_start_date), WEEK(MONDAY))) AS max_event_date
     FROM
         {{ ref('mart_planning_events_weekly_exploded') }}

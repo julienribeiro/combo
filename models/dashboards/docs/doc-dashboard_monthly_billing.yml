@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: dashboard_billing
+  - name: dashboard_monthly_billing
     description: >
       Final dashboard table for CFO and Head of Sales, combining monthly billing metrics
       with account and location dimensions. Provides both legacy and consumption-based

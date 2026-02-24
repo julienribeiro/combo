@@ -60,3 +60,25 @@ calculated from avg_billable_employees (base price + extra employees cost).
 Weekly revenue under the legacy fixed pricing model,
 calculated from avg_active_contracts.
 {% enddocs %}
+
+{% docs weekly_revenue_variation %}
+Difference between consumption and legacy weekly revenue.
+Positive means the new model generates more revenue, negative means less.
+{% enddocs %}
+
+{% docs actual_weekly_revenue %}
+Revenue based on the applicable pricing model for the week.
+Legacy pricing before 2023, consumption-based pricing from 2023 onwards.
+{% enddocs %}
+
+{% docs pricing_model %}
+Indicates which pricing model applies for the period.
+legacy = before 2023, consumption = from 2023 onwards.
+{% enddocs %}
+
+{% docs revenue_lift_segment %}
+Classification of the revenue impact when comparing consumption vs legacy pricing.
+expansion = new model generates more revenue,
+contraction = new model generates less revenue,
+neutral = no difference.
+{% enddocs %}

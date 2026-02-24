@@ -1,0 +1,84 @@
+version: 2
+
+models:
+  - name: dashboard_weekly_billing
+    description: >
+      Weekly billing dashboard table at the finest grain (week x account x location),
+      designed for Looker consumption. Combines weekly billing metrics with account
+      and location dimensions, provides both legacy and consumption-based revenue
+      calculations, and includes churn risk and revenue lift indicators.
+      Answers Question 2: weekly expected revenue per account under the new pricing model.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          arguments:
+            combination_of_columns:
+              - week_start_date
+              - account_id
+              - location_id
+    columns:
+      - name: week_start_date
+        description: "{{ doc('week_start_date') }}"
+        tests:
+          - not_null
+      - name: account_id
+        description: "{{ doc('account_id') }}"
+        tests:
+          - not_null
+      - name: account_name
+        description: "{{ doc('account_name') }}"
+      - name: account_country
+        description: "{{ doc('country') }}"
+      - name: account_city
+        description: "{{ doc('city') }}"
+      - name: location_id
+        description: "{{ doc('location_id') }}"
+        tests:
+          - not_null
+      - name: location_name
+        description: "{{ doc('location_name') }}"
+      - name: location_city
+        description: "{{ doc('city') }}"
+      - name: location_zipcode
+        description: "{{ doc('zipcode') }}"
+      - name: location_country
+        description: "{{ doc('country') }}"
+      - name: nb_billable_employees
+        description: "{{ doc('nb_billable_employees') }}"
+        tests:
+          - not_null
+      - name: nb_active_contracts
+        description: "{{ doc('nb_active_contracts') }}"
+        tests:
+          - not_null
+      - name: location_size
+        description: "{{ doc('location_size') }}"
+        tests:
+          - not_null
+      - name: legacy_weekly_revenue
+        description: "{{ doc('legacy_weekly_revenue') }}"
+        tests:
+          - not_null
+      - name: consumption_weekly_revenue
+        description: "{{ doc('consumption_weekly_revenue') }}"
+        tests:
+          - not_null
+      - name: weekly_revenue_variation
+        description: "{{ doc('weekly_revenue_variation') }}"
+        tests:
+          - not_null
+      - name: actual_weekly_revenue
+        description: "{{ doc('actual_weekly_revenue') }}"
+        tests:
+          - not_null
+      - name: pricing_model
+        description: "{{ doc('pricing_model') }}"
+        tests:
+          - not_null
+      - name: revenue_lift_segment
+        description: "{{ doc('revenue_lift_segment') }}"
+        tests:
+          - not_null
+      - name: is_inactive_location
+        description: "{{ doc('is_inactive_location') }}"
+        tests:
+          - not_null

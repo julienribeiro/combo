@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: bi_weekly_billing_metrics
+  - name: bi_weekly_billing
     description: >
       Weekly billing metrics per location, combining the number of billable employees
       (those with at least one shift or rest planned during the week) and the number
