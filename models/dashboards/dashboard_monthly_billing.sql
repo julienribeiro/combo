@@ -1,5 +1,3 @@
--- models/dashboards/dashboard_billing.sql
-
 WITH monthly_billing AS (
     SELECT
         month_start_date,
