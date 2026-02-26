@@ -1,4 +1,4 @@
-WITH members AS (
+WITH final AS (
     SELECT
         member_id,
         member_user_id,

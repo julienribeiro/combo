@@ -2,12 +2,12 @@
 📊 Dashboard Looker : [ici](https://lookerstudio.google.com/u/1/reporting/10f67ddd-d9ba-4b15-9682-2ff7282af8c0/page/p_r9lan4c80d)
 
 ## Recommandation stratégique
-### Problème principale détecté : 
+### Problème principal détecté : 
 ❌ ~70 % d'événements (shifts/rests) sont "orphelins", (que nous ne pouvons rattacher à des locations), sous-estime le nombre d'employés facturables et donc le revenu consumption. 
 ⚠️ Les chiffres présentés constituent alors une borne basse.
 
 L'analyse de l'impact de la migration du modèle à prix fixe (legacy) vers la tarification à la consommation révèle un manque à gagner croissant.
-Alors que le MRR consumption stagne autour de 9.1K€–9.6K€/mois sur la période observée, le MRR legacy théorique progresse régulièrement pour atteindre 16K€ en mai 2024, soit un delta négatif d'environ −7K€ €/mois. Ce décalage s'accentue mois après mois : le nouveau modèle était encore favorable en août 2023 (+765 €), mais la tendance s'est inversée dès septembre 2023 pour ne jamais se rétablir.
+Alors que le MRR consumption stagne autour de 9.1K€–9.6K€/mois sur la période observée, le MRR legacy théorique progresse régulièrement pour atteindre 16K€ en mai 2024, soit un delta négatif d'environ −7K€/mois. Ce décalage s'accentue mois après mois : le nouveau modèle était encore favorable en août 2023 (+765€), mais la tendance s'est inversée dès septembre 2023 pour ne jamais se rétablir.
 
 Ce phénomène s'explique principalement par la très faible activité enregistrée par location : 151 des 152 établissements sont classés « micro » (0–5 employés facturables) en mai 2024, et le taux moyen d'inactivité des locations est de 87% sur la période. Autrement dit, la majorité des établissements génère un revenu plancher de 60 €/mois sans consommation réelle.
 
@@ -29,7 +29,7 @@ Si après correction/récupération de la donnée, le delta reste significativem
 - Visible dans le dashboard Looker [ici](https://lookerstudio.google.com/u/1/reporting/10f67ddd-d9ba-4b15-9682-2ff7282af8c0/page/p_cecyl9280d)
 
 ## Question 3 - Qualité des données (bonus)
-1.. Sur 109K events (shifts + rests), 76K (**≃70**%) ne sont pas rattachables à un contrat dans `user_contracts` :
+1. Sur 109K events (shifts + rests), 76K (**≃70**%) ne sont pas rattachables à un contrat dans `user_contracts` :
 - Shifts : 9 085 / 21 003 (43.3%)
 - Rests : 66 589 / 87 909 (75.7%)
 

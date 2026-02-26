@@ -67,10 +67,7 @@ final AS (
             WHEN ROUND(weekly_billing.consumption_weekly_revenue - weekly_billing.legacy_weekly_revenue, 2) > 0 THEN 'expansion'
             WHEN ROUND(weekly_billing.consumption_weekly_revenue - weekly_billing.legacy_weekly_revenue, 2) < 0 THEN 'contraction'
             ELSE 'neutral'
-        END AS revenue_lift_segment,
-        weekly_billing.nb_active_contracts > 0
-            AND weekly_billing.nb_billable_employees = 0
-        AS is_inactive_location
+        END AS revenue_lift_segment
     FROM
         weekly_billing
     LEFT JOIN

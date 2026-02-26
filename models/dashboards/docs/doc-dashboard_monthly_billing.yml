@@ -54,7 +54,7 @@ models:
         tests:
           - not_null
       - name: legacy_monthly_revenue
-        description: "{{ doc('location_size') }}"
+        description: "{{ doc('legacy_monthly_revenue') }}"
         tests:
           - not_null
       - name: consumption_monthly_revenue

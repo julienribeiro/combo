@@ -78,7 +78,3 @@ models:
         description: "{{ doc('revenue_lift_segment') }}"
         tests:
           - not_null
-      - name: is_inactive_location
-        description: "{{ doc('is_inactive_location') }}"
-        tests:
-          - not_null

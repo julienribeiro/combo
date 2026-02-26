@@ -10,11 +10,11 @@ models:
       - dbt_utils.unique_combination_of_columns:
           arguments:
             combination_of_columns:
-              - month_start
+              - month_start_date
               - account_id
               - location_id
     columns:
-      - name: month_start
+      - name: month_start_date
         description: First day of the month.
         tests:
           - not_null
@@ -35,7 +35,7 @@ models:
         tests:
           - not_null
       - name: location_size
-        description: "{{ doc('avg_active_contracts') }}"
+        description: "{{ doc('location_size') }}"
         tests:
           - not_null
       - name: legacy_monthly_revenue
