@@ -1,4 +1,6 @@
 # Partie 2 : Dashboard & Business Insights
+📊 Dashboard Looker : [ici](https://lookerstudio.google.com/u/1/reporting/10f67ddd-d9ba-4b15-9682-2ff7282af8c0/page/p_r9lan4c80d)
+
 ## Recommandation stratégique
 ### Problème principale détecté : 
 ❌ ~70 % d'événements (shifts/rests) sont "orphelins", (que nous ne pouvons rattacher à des locations), sous-estime le nombre d'employés facturables et donc le revenu consumption. 
@@ -24,7 +26,7 @@ Si après correction/récupération de la donnée, le delta reste significativem
 
 # Partie 1 : Questions
 ## Question 1 et 2 :
-- Visible dans le dashboard Looker [ici](https://lookerstudio.google.com/u/1/reporting/10f67ddd-d9ba-4b15-9682-2ff7282af8c0/page/p_cecyl9280d)**
+- Visible dans le dashboard Looker [ici](https://lookerstudio.google.com/u/1/reporting/10f67ddd-d9ba-4b15-9682-2ff7282af8c0/page/p_cecyl9280d)
 
 ## Question 3 - Qualité des données (bonus)
 1.. Sur 109K events (shifts + rests), 76K (**≃70**%) ne sont pas rattachables à un contrat dans `user_contracts` :
@@ -34,9 +36,9 @@ Si après correction/récupération de la donnée, le delta reste significativem
 ### Impact sur la facturation :
 - Consumption pricing : les chiffres présentés sont une **borne basse** — le revenu réel serait plus élevé avec des données complètes *(plus de consommation)*
 
-### Solution :*
+### Solution :
 - Préférable : Communiquer auprès de la tech pour faire un rattrapage de la donnée
-- À défaut : Choix de ne pas s’en servir ! + ajout d’un test **not_null** dans la table **mart_planning_events** pour s’assurer de bien récupérer le **user_contract_id**
+- À défaut : Utiliser 30% des évènements disponibles et rattachable à un contrat ! + ajout d’un test **not_null** dans la table **mart_planning_events** pour s’assurer de bien récupérer le **user_contract_id** (alerting sur la qualité de la donnée)
 
 2. Sur 7.7K membres, 4.9K (**≃50**%) ne sont pas rattachables à un contrat dans `user_contracts` 
 
@@ -45,4 +47,4 @@ Si après correction/récupération de la donnée, le delta reste significativem
 
 **Solution :** 
 - Préférable : Communiquer auprès de la tech pour faire un rattrapage de la donnée
-- À défaut :  **choix de ne pas s’en servir !**
+- À défaut :  Ne considérer que les employés ayant un contrat rattachable à une location !
