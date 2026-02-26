@@ -61,7 +61,8 @@ final AS (
             WHEN monthly_billing.month_start_date < '2023-01-01'
                 THEN 'legacy'
             ELSE 'consumption'
-        END AS pricing_model
+        END AS pricing_model,
+        {{ inactive_location('monthly_billing.consumption_monthly_revenue', 'monthly_billing.avg_billable_employees') }} AS is_inactive_location
     FROM
         monthly_billing
     LEFT JOIN

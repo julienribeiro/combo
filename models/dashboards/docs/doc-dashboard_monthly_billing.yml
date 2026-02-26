@@ -75,3 +75,7 @@ models:
           legacy = before 2023, consumption = from 2023 onwards.
         tests:
           - not_null
+      - name: is_inactive_location
+        description: "{{ doc('is_inactive_location') }}"
+        tests:
+          - not_null
